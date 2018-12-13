@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[load()方法 jQuery1.8已弃用]]></title>
+    <url>%2F2018%2F12%2F13%2Fload-%E6%96%B9%E6%B3%95-jQuery1-8%E5%B7%B2%E5%BC%83%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[load()方法会在指定元素的onload()事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生load()事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发load()事件。用法如下： 1. $(window).load(function(){}); 2. $(&quot;document&quot;).load(function(){}); 第一个用法等价于 window.onload=function(){}; 在用如下代码测试第一个用法时 $(window).load(function () { var body_element = document.getElementsByTagName(&quot;ul&quot;)[0]; if (body_element.childNodes.length == 0) return; else alert(body_element.childNodes.length); }); 出现错误： Uncaught TypeError: url.indexof is not a function at jQuery.fn.init.jQuery.fn.load` 原来.load()，.unload()和.error()从jQuery1.8开始就被弃用了，换成了.on()方法。将 $(window).load(function(){}); 改为： $(window).on(&quot;load&quot;,function(){}); 如此，便可以在浏览器加载完毕后出现alert警告框。同样地，第二个用法也应使用.on()方法。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F12%2F13%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
