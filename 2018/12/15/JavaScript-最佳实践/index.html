@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Learning never ends.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://zzz12521.github.io/categories/index.html">
+<meta name="description" content="今天学习了一些JavaScript的最佳实践的知识，来记录一下。 平稳退化所谓平稳退化，即正确使用JavaScript脚本，让访问者在他们的浏览器不支持JavaScript的情况下，或者浏览器支持JavaScript，但用户已禁止它的情况下，仍能顺利地浏览你的网站。 举个在新窗口里打开链接的例子，这需要用到window对象的open()方法来创建新的浏览器窗口。 window.open(url,n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 最佳实践">
+<meta property="og:url" content="http://zzz12521.github.io/2018/12/15/JavaScript-最佳实践/index.html">
 <meta property="og:site_name" content="zzz12521&#39;s personal blog">
-<meta property="og:description" content="Learning never ends.">
+<meta property="og:description" content="今天学习了一些JavaScript的最佳实践的知识，来记录一下。 平稳退化所谓平稳退化，即正确使用JavaScript脚本，让访问者在他们的浏览器不支持JavaScript的情况下，或者浏览器支持JavaScript，但用户已禁止它的情况下，仍能顺利地浏览你的网站。 举个在新窗口里打开链接的例子，这需要用到window对象的open()方法来创建新的浏览器窗口。 window.open(url,n">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-13T03:13:26.736Z">
+<meta property="og:updated_time" content="2018-12-15T13:44:12.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="Learning never ends.">
+<meta name="twitter:title" content="JavaScript 最佳实践">
+<meta name="twitter:description" content="今天学习了一些JavaScript的最佳实践的知识，来记录一下。 平稳退化所谓平稳退化，即正确使用JavaScript脚本，让访问者在他们的浏览器不支持JavaScript的情况下，或者浏览器支持JavaScript，但用户已禁止它的情况下，仍能顺利地浏览你的网站。 举个在新窗口里打开链接的例子，这需要用到window对象的open()方法来创建新的浏览器窗口。 window.open(url,n">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://zzz12521.github.io/categories/">
+  <link rel="canonical" href="http://zzz12521.github.io/2018/12/15/JavaScript-最佳实践/">
 
 
 
 
 
-  <title>categories | zzz12521's personal blog</title>
+  <title>JavaScript 最佳实践 | zzz12521's personal blog</title>
   
 
 
@@ -292,40 +292,215 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zzz12521.github.io/2018/12/15/JavaScript-最佳实践/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zzz12521">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzz12521's personal blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                暂无分类
-            </div>
-            <div class="category-all">
+          <h1 class="post-title" itemprop="name headline">JavaScript 最佳实践</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-            </div>
-          </div>
-        
-      </div>
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-15T17:40:56+08:00">
+                2018-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>今天学习了一些JavaScript的最佳实践的知识，来记录一下。</p>
+<h2 id="平稳退化"><a href="#平稳退化" class="headerlink" title="平稳退化"></a>平稳退化</h2><p>所谓平稳退化，即正确使用JavaScript脚本，让访问者在他们的浏览器不支持JavaScript的情况下，或者浏览器支持JavaScript，但用户已禁止它的情况下，仍能顺利地浏览你的网站。</p>
+<p>举个在新窗口里打开链接的例子，这需要用到window对象的<code>open()</code>方法来创建新的浏览器窗口。</p>
+<pre><code>window.open(url,name,features);
+</code></pre><p>该方法有三个参数：</p>
+<ul>
+<li><p>第一个参数是想在新窗口里打开的URL地址，如省略，则屏幕显示一个空白的浏览器窗口。</p>
+</li>
+<li><p>第二个参数是新窗口的名字，可以在代码里通过这个名字与新窗口进行通信。</p>
+</li>
+<li><p>第三个参数是一个以逗号分隔的字符串，其内容是新窗口的各种属性。如新窗口的尺寸（高度和宽度）。</p>
+</li>
+</ul>
+<p>下面这个函数将打开一个320像素宽，480像素高的新窗口“popup”。</p>
+<pre><code>function popup(url){
+    window.open(url,&quot;popup&quot;,&quot;width=320,height=480&quot;);
+}
+</code></pre><p>通过在HTML里写入如下元素：</p>
+<pre><code>&lt;a href=&quot;http://wwww.example.com/&quot;
+onclick=&quot;popup(this.href);return false;&quot;&gt;Example&lt;a&gt;
+</code></pre><p>如果用户的浏览器支持JavaScript脚本，在点击Example时会触发<code>onclick()</code>事件，浏览器会新建一个所设定的“popup”窗口。</p>
+<p>如果用户的浏览器不支持JavaScript或者JavaScript被禁用，用户仍可以使用href属性中设定的URL地址来打开链接，不过它没有打开一个新的窗口，而是用链接里的新文档直接替换当前窗口中的温文档。</p>
+<p>这便是一个经典的平稳退化。</p>
+<a id="more"></a>
+<h2 id="渐进增强"><a href="#渐进增强" class="headerlink" title="渐进增强"></a>渐进增强</h2><p>所谓渐进增强，就是令JavaScript脚本单独放在一个文件里，与HTML文档进行分离，令文档内容在没有JavaScript脚本的情况下仍能正常访问，只是缺少某些“行为”。</p>
+<p>在外部JavaScript文件里可以把一个事件添加到HTML文档中的某个元素上：</p>
+<pre><code>element.event = action...
+</code></pre><p>可以用class属性或id属性把一个事件添加相应的元素上。如果想把一个事件添加到某个带有特定id属性的元素上，用<code>getElementById</code>就可以解决：</p>
+<pre><code>getElementById(id).event = action
+</code></pre><p>如果涉及多个元素，可以用<code>getElementsByTagName</code>和<code>getAttribute</code>把事件加在有着特定属性的一组元素上。例：</p>
+<pre><code>window.onload = function(){
+    var link = document.getElementsByTagName(&quot;a&quot;);
+    for(var i=0; i&lt;link.length; i++)
+    {
+        if(link[i].getAttribute(&quot;class&quot;)==&quot;popup&quot;)
+        {
+            link[i].onClck = function(){
+                popup(this.getAttribute(&quot;href&quot;));
+                return false;
+            }
+        }
+    }
+}
+</code></pre><h2 id="向后兼容"><a href="#向后兼容" class="headerlink" title="向后兼容"></a>向后兼容</h2><p>不同浏览器对JavaScript的兼容程度也不一样，绝大多数现代浏览器都能很好地支持DOM，但比较古老的浏览器可能无法理解DOM提供的方法和属性。此问题可以用<strong>对象检测</strong>来很好地解决。</p>
+<p>例：如果有一个使用了<code>getElementById()</code>方法的函数，可以在调用<code>getElementById()</code>方法之前先检查用户使用的浏览器是否支持这个方法。在使用对象检测时，一定要删除方法名后的圆括号，否则测试的将是方法的结果，无论方法是否存在。如果需要测试多个方法或属性是否存在，可以用“逻辑或”操作符将其合并：</p>
+<pre><code>if(!document.getElementById||!document.getElementsByTagName) return false;
+  //只要浏览器不支持这两个方法中的任何一个，就直接返回，不再执行下面的代码
+else{
+    //使用getElementById()和getElementsByTagName()方法
+}
+</code></pre><p>这可以使脚本有很好的向后兼容性。</p>
+<h2 id="性能考虑"><a href="#性能考虑" class="headerlink" title="性能考虑"></a>性能考虑</h2><p>为保证web应用流畅地运行，在为文档编写和应用脚本时，应注意一些问题。</p>
+<h3 id="尽量减少访问DOM和尽量减少标记"><a href="#尽量减少访问DOM和尽量减少标记" class="headerlink" title="尽量减少访问DOM和尽量减少标记"></a>尽量减少访问DOM和尽量减少标记</h3><pre><code>if(document.getElementsByTagName(&quot;a&quot;).length&gt;0)
+{
+    for(var i=0; i&lt;document.getElementsByTagName(&quot;a&quot;).length; i++)
+    //进行相应处理
+}
+</code></pre><p>凡是查询DOM中的某些元素，浏览器都会搜索整个DOM树，从中查找符合要求的元素，这段代码浪费了一次搜索。更好的方法是把第一次的搜索放在一个变量里，然后使用这个变量。如：</p>
+<pre><code>var links = document.getElementsByTagName(&quot;a&quot;).length;
+if(links&gt;0)
+{
+    for(var i=0; i&lt;links; i++)
+    //进行相应处理
+}
+</code></pre><p>另外，如果有多个函数在重复一件事情，每个函数都取得了一组类似的元素，可以考虑代码重构，把搜索结果保存在一个全局变量里，或把一组元素以数组的形式传递给函数。</p>
+<p>同时，也要尽量减少文档中标记的数量，过多不必要的元素只会增加DOM树的规模进而增加遍历DOM树查找某个元素的时间。</p>
+<h3 id="合并放置脚本"><a href="#合并放置脚本" class="headerlink" title="合并放置脚本"></a>合并放置脚本</h3><p>将多个脚本尽可能地合并到一个脚本中，可以减少页面加载时发送的请求数量，从而减少页面初次加载的时间。如果将脚本放在&lt;head&gt;块中，该脚本会导致浏览器无法并行加载其他文件（如图像或其他脚本）。一般来说，根据HTTP协议，浏览器每次从同一个域名中最多只能同时下载两个文件。在此期间，浏览器不回下载其他任何文件，其他所有资源必须等脚本加载完毕后才能下载。所以把所有&lt;script&gt;标签都放在&lt;/body&gt;标记之前，可以让页面变得更快。</p>
+<h3 id="压缩脚本"><a href="#压缩脚本" class="headerlink" title="压缩脚本"></a>压缩脚本</h3><p>写完脚本，做了优化之后，也将其放到文档合适的位置后，可以通过压缩脚本来加快加载速度。</p>
+<p>所谓压缩脚本，指精简你的代码，删除一些如空格、注释等不必要的字节，重写你的代码，使用更短的变量名，从而减少整体文件大小。</p>
+<p>几个代表性的代码压缩工具：</p>
+<ul>
+<li><p>Douglas Crockford的 JSMin</p>
+</li>
+<li><p>雅虎的YUI Compressor</p>
+</li>
+<li><p>谷歌的Closure Compiler</p>
+</li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/13/load-方法-jQuery1-8已弃用/" rel="next" title="load()方法 jQuery1.8已弃用">
+                <i class="fa fa-chevron-left"></i> load()方法 jQuery1.8已弃用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -358,8 +533,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -401,6 +585,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#平稳退化"><span class="nav-number">1.</span> <span class="nav-text">平稳退化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渐进增强"><span class="nav-number">2.</span> <span class="nav-text">渐进增强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向后兼容"><span class="nav-number">3.</span> <span class="nav-text">向后兼容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能考虑"><span class="nav-number">4.</span> <span class="nav-text">性能考虑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#尽量减少访问DOM和尽量减少标记"><span class="nav-number">4.1.</span> <span class="nav-text">尽量减少访问DOM和尽量减少标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并放置脚本"><span class="nav-number">4.2.</span> <span class="nav-text">合并放置脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩脚本"><span class="nav-number">4.3.</span> <span class="nav-text">压缩脚本</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
