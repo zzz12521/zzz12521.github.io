@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[HTML页面延时跳转]]></title>
+    <url>%2F2018%2F12%2F21%2FHTML%E9%A1%B5%E9%9D%A2%E5%BB%B6%E6%97%B6%E8%B7%B3%E8%BD%AC%2F</url>
+    <content type="text"><![CDATA[web开发中经常会遇到页面跳转或延时跳转的需求，掌握各种页面跳转方式很重要。以下是我查阅资料总结出的各种实现跳转的方法。 页面延时跳转在head头部里写meta标签1234567&lt;head&gt; &lt;meta http-equiv="refresh" content="s;URL=http://.../"/&gt;&lt;/head&gt;&lt;!-- s表示页面停留的时间，单位为秒； URL=http://.../ 表示将要跳转的页面路径--&gt; 用JavaScript实现window对象的setTimeout方法123456&lt;script&gt; setTimeout('window.location="http://.../"', 5000);&lt;/script&gt;&lt;!-- location表示指定跳转页面的路径，5000为时间，单位为毫秒--&gt; setTimeout方法在设定时间等待完成后不一定会完成跳转。因为JavaScript是一个单线程的解释器，一定时间内只能执行一段代码，为了控制要执行的代码，就有一个JavaScript任务队列。这些任务会按照将它们添加到任务队列的顺序执行。setTimeout()的第二个参数告诉JavaScript再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码则会立即执行；如果队列不是空的，那么添加的代码会在前面的代码执行完毕后再执行。 调用setTimeout()之后，该方法会返回一个数值ID，表示超时调用。这个超时调用ID是计划执行代码的唯一标识符，可以通过它来取消超时调用。取消超时调用使用方法clearTimeout(); 12var timeId=setTimeout(function()&#123;alert('world')&#125;,2000);clearTimeout(timeId); setInterval()方法该方法每经过相同的时间，就会执行相应的表达式。其参数与setTimeout()方法接收的参数类似。 1234567891011&lt;script type="text/javascript"&gt; onload=function()&#123;setInterval(go, 1000);&#125;; var x=3; function go()&#123; x--; if(x&gt;0)&#123; document.getElementById("sp").innerHTML=x;&#125; else&#123; location.href='res.html';&#125; &#125;&lt;/script&gt; 该方法会按照时间间隔重复执行代码，直至该方法被取消或页面被卸载，取消该方法要使用clearInterval()方法。 JavaScript页面跳转方法12345678910111213141516171819&lt;script type="text/JavaScript"&gt; setTimeout("window.location=('index.php'",3000); //location直接加链接方式 setTimeout("window.location.href='index.php'",3000); //location.href方式,会产生历史记录 setTimeout("window.location.assign('index.php')",3000); /*location.assign方式,加载URL指定的新HTML文档， 会产生历史记录，可以通过点击“后退”按钮返回到上一页*/ Widdow.location.replace(‘index.php’); /*location.replace方式，加载URL指定的新文档来替换当前文档, 是替换当前窗口的页面，前后两个页面共用一个窗口， 不会在浏览器的历史记录被查询到，没有后退返回上一页*/ window.history.go(n); /*历史记录go(n)方式（n表示对历史记录相对当前页的前进步数， n为负数表示返回以前的页面，n也可以是一个表示url的字符串， url必须是历史记录中的，不然不会跳转）*/ setTimeout("window.open('index.php',target,args)",3000); //通过打开一个新窗口实现跳转&lt;/script&gt; PHP脚本控制跳转方式通过改写HTTP头信息来进行跳转 header refresh方式1Header(“refresh:3;url=’index.php’”); header location方式12sleep(3);Header(“location:index.php”); 要注意这种方式可能会导致无法进入当前页面。即若当前在register.php页面链接到login.php页面时，login.php页面内用header location方式跳转，页面会从register.php页面直接等待三秒跳转到index.php，不会进入到login.php页面，这是因为header location会对页面进行重定向。]]></content>
+      <categories>
+        <category>HTML</category>
+        <category>JavaScript</category>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+        <tag>JavaScript</tag>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript 最佳实践]]></title>
     <url>%2F2018%2F12%2F15%2FJavaScript-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%2F</url>
     <content type="text"><![CDATA[今天学习了一些JavaScript的最佳实践的知识，来记录一下。 平稳退化所谓平稳退化，即正确使用JavaScript脚本，让访问者在他们的浏览器不支持JavaScript的情况下，或者浏览器支持JavaScript，但用户已禁止它的情况下，仍能顺利地浏览你的网站。 举个在新窗口里打开链接的例子，这需要用到window对象的open()方法来创建新的浏览器窗口。 window.open(url,name,features); 该方法有三个参数： 第一个参数是想在新窗口里打开的URL地址，如省略，则屏幕显示一个空白的浏览器窗口。 第二个参数是新窗口的名字，可以在代码里通过这个名字与新窗口进行通信。 第三个参数是一个以逗号分隔的字符串，其内容是新窗口的各种属性。如新窗口的尺寸（高度和宽度）。 下面这个函数将打开一个320像素宽，480像素高的新窗口“popup”。 function popup(url){ window.open(url,&quot;popup&quot;,&quot;width=320,height=480&quot;); } 通过在HTML里写入如下元素： &lt;a href=&quot;http://wwww.example.com/&quot; onclick=&quot;popup(this.href);return false;&quot;&gt;Example&lt;a&gt; 如果用户的浏览器支持JavaScript脚本，在点击Example时会触发onclick()事件，浏览器会新建一个所设定的“popup”窗口。 如果用户的浏览器不支持JavaScript或者JavaScript被禁用，用户仍可以使用href属性中设定的URL地址来打开链接，不过它没有打开一个新的窗口，而是用链接里的新文档直接替换当前窗口中的温文档。 这便是一个经典的平稳退化。 渐进增强所谓渐进增强，就是令JavaScript脚本单独放在一个文件里，与HTML文档进行分离，令文档内容在没有JavaScript脚本的情况下仍能正常访问，只是缺少某些“行为”。 在外部JavaScript文件里可以把一个事件添加到HTML文档中的某个元素上： element.event = action... 可以用class属性或id属性把一个事件添加相应的元素上。如果想把一个事件添加到某个带有特定id属性的元素上，用getElementById就可以解决： getElementById(id).event = action 如果涉及多个元素，可以用getElementsByTagName和getAttribute把事件加在有着特定属性的一组元素上。例： window.onload = function(){ var link = document.getElementsByTagName(&quot;a&quot;); for(var i=0; i&lt;link.length; i++) { if(link[i].getAttribute(&quot;class&quot;)==&quot;popup&quot;) { link[i].onClck = function(){ popup(this.getAttribute(&quot;href&quot;)); return false; } } } } 向后兼容不同浏览器对JavaScript的兼容程度也不一样，绝大多数现代浏览器都能很好地支持DOM，但比较古老的浏览器可能无法理解DOM提供的方法和属性。此问题可以用对象检测来很好地解决。 例：如果有一个使用了getElementById()方法的函数，可以在调用getElementById()方法之前先检查用户使用的浏览器是否支持这个方法。在使用对象检测时，一定要删除方法名后的圆括号，否则测试的将是方法的结果，无论方法是否存在。如果需要测试多个方法或属性是否存在，可以用“逻辑或”操作符将其合并： if(!document.getElementById||!document.getElementsByTagName) return false; //只要浏览器不支持这两个方法中的任何一个，就直接返回，不再执行下面的代码 else{ //使用getElementById()和getElementsByTagName()方法 } 这可以使脚本有很好的向后兼容性。 性能考虑为保证web应用流畅地运行，在为文档编写和应用脚本时，应注意一些问题。 尽量减少访问DOM和尽量减少标记if(document.getElementsByTagName(&quot;a&quot;).length&gt;0) { for(var i=0; i&lt;document.getElementsByTagName(&quot;a&quot;).length; i++) //进行相应处理 } 凡是查询DOM中的某些元素，浏览器都会搜索整个DOM树，从中查找符合要求的元素，这段代码浪费了一次搜索。更好的方法是把第一次的搜索放在一个变量里，然后使用这个变量。如： var links = document.getElementsByTagName(&quot;a&quot;).length; if(links&gt;0) { for(var i=0; i&lt;links; i++) //进行相应处理 } 另外，如果有多个函数在重复一件事情，每个函数都取得了一组类似的元素，可以考虑代码重构，把搜索结果保存在一个全局变量里，或把一组元素以数组的形式传递给函数。 同时，也要尽量减少文档中标记的数量，过多不必要的元素只会增加DOM树的规模进而增加遍历DOM树查找某个元素的时间。 合并放置脚本将多个脚本尽可能地合并到一个脚本中，可以减少页面加载时发送的请求数量，从而减少页面初次加载的时间。如果将脚本放在&lt;head&gt;块中，该脚本会导致浏览器无法并行加载其他文件（如图像或其他脚本）。一般来说，根据HTTP协议，浏览器每次从同一个域名中最多只能同时下载两个文件。在此期间，浏览器不回下载其他任何文件，其他所有资源必须等脚本加载完毕后才能下载。所以把所有&lt;script&gt;标签都放在&lt;/body&gt;标记之前，可以让页面变得更快。 压缩脚本写完脚本，做了优化之后，也将其放到文档合适的位置后，可以通过压缩脚本来加快加载速度。 所谓压缩脚本，指精简你的代码，删除一些如空格、注释等不必要的字节，重写你的代码，使用更短的变量名，从而减少整体文件大小。 几个代表性的代码压缩工具： Douglas Crockford的 JSMin 雅虎的YUI Compressor 谷歌的Closure Compiler]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[load()方法 jQuery1.8已弃用]]></title>
     <url>%2F2018%2F12%2F13%2Fload-%E6%96%B9%E6%B3%95-jQuery1-8%E5%B7%B2%E5%BC%83%E7%94%A8%2F</url>
     <content type="text"><![CDATA[load()方法会在指定元素的onload()事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生load()事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发load()事件。用法如下： 1. $(window).load(function(){}); 2. $(&quot;document&quot;).load(function(){}); 第一个用法等价于 window.onload=function(){}; 在用如下代码测试第一个用法时 $(window).load(function () { var body_element = document.getElementsByTagName(&quot;ul&quot;)[0]; if (body_element.childNodes.length == 0) return; else alert(body_element.childNodes.length); }); 出现错误： Uncaught TypeError: url.indexof is not a function at jQuery.fn.init.jQuery.fn.load` 原来.load()，.unload()和.error()从jQuery1.8开始就被弃用了，换成了.on()方法。将 $(window).load(function(){}); 改为： $(window).on(&quot;load&quot;,function(){}); 如此，便可以在浏览器加载完毕后出现alert警告框。同样地，第二个用法也应使用.on()方法。]]></content>
+      <categories>
+        <category>jQuery</category>
+      </categories>
+      <tags>
+        <tag>jQuery</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
