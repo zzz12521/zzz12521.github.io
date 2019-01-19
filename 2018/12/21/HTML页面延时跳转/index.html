@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="zzz12521&#39;s personal blog">
 <meta property="og:description" content="web开发中经常会遇到页面跳转或延时跳转的需求，掌握各种页面跳转方式很重要。以下是我查阅资料总结出的各种实现跳转的方法。 页面延时跳转在head头部里写meta标签1234567&amp;lt;head&amp;gt;  &amp;lt;meta http-equiv=&quot;refresh&quot; content=&quot;s;URL=http://.../&quot;/&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;!--  s表示页面停留的时间，单位">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-22T15:05:47.173Z">
+<meta property="og:updated_time" content="2018-12-22T15:28:56.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML页面延时跳转">
 <meta name="twitter:description" content="web开发中经常会遇到页面跳转或延时跳转的需求，掌握各种页面跳转方式很重要。以下是我查阅资料总结出的各种实现跳转的方法。 页面延时跳转在head头部里写meta标签1234567&amp;lt;head&amp;gt;  &amp;lt;meta http-equiv=&quot;refresh&quot; content=&quot;s;URL=http://.../&quot;/&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;!--  s表示页面停留的时间，单位">
@@ -429,7 +429,7 @@
 <h4 id="setInterval-方法"><a href="#setInterval-方法" class="headerlink" title="setInterval()方法"></a>setInterval()方法</h4><p>该方法每经过相同的时间，就会执行相应的表达式。其参数与setTimeout()方法接收的参数类似。</p>
 <figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type="text/javascript"&gt;</span><br><span class="line">  onload=function()&#123;setInterval(go, 1000);&#125;;</span><br><span class="line">  var x=3;</span><br><span class="line">  function go()&#123;</span><br><span class="line">      x--;</span><br><span class="line">      if(x&gt;0)&#123;</span><br><span class="line">          document.getElementById("sp").innerHTML=x;&#125;</span><br><span class="line">      else&#123;</span><br><span class="line">          location.href='res.html';&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>该方法会按照时间间隔重复执行代码，直至该方法被取消或页面被卸载，取消该方法要使用clearInterval()方法。</p>
-<h2 id="JavaScript页面跳转方法"><a href="#JavaScript页面跳转方法" class="headerlink" title="JavaScript页面跳转方法"></a>JavaScript页面跳转方法</h2><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type="text/JavaScript"&gt;</span><br><span class="line">  setTimeout("window.location=('index.php'",3000);</span><br><span class="line">  //location直接加链接方式</span><br><span class="line">  setTimeout("window.location.href='index.php'",3000);</span><br><span class="line">  //location.href方式,会产生历史记录</span><br><span class="line">  setTimeout("window.location.assign('index.php')",3000);</span><br><span class="line">  /*location.assign方式,加载URL指定的新HTML文档，</span><br><span class="line">  会产生历史记录，可以通过点击“后退”按钮返回到上一页*/</span><br><span class="line">  Widdow.location.replace(‘index.php’);</span><br><span class="line">  /*location.replace方式，加载URL指定的新文档来替换当前文档,</span><br><span class="line">  是替换当前窗口的页面，前后两个页面共用一个窗口，</span><br><span class="line">  不会在浏览器的历史记录被查询到，没有后退返回上一页*/</span><br><span class="line">  window.history.go(n);</span><br><span class="line">  /*历史记录go(n)方式（n表示对历史记录相对当前页的前进步数，</span><br><span class="line">  n为负数表示返回以前的页面，n也可以是一个表示url的字符串，</span><br><span class="line">  url必须是历史记录中的，不然不会跳转）*/</span><br><span class="line">  setTimeout("window.open('index.php',target,args)",3000);</span><br><span class="line">  //通过打开一个新窗口实现跳转</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="页面跳转"><a href="#页面跳转" class="headerlink" title="页面跳转"></a>页面跳转</h2><h3 id="JavaScript页面跳转方法"><a href="#JavaScript页面跳转方法" class="headerlink" title="JavaScript页面跳转方法"></a>JavaScript页面跳转方法</h3><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type="text/JavaScript"&gt;</span><br><span class="line">  setTimeout("window.location=('index.php'",3000);</span><br><span class="line">  //location直接加链接方式</span><br><span class="line">  setTimeout("window.location.href='index.php'",3000);</span><br><span class="line">  //location.href方式,会产生历史记录</span><br><span class="line">  setTimeout("window.location.assign('index.php')",3000);</span><br><span class="line">  /*location.assign方式,加载URL指定的新HTML文档，</span><br><span class="line">  会产生历史记录，可以通过点击“后退”按钮返回到上一页*/</span><br><span class="line">  Widdow.location.replace(‘index.php’);</span><br><span class="line">  /*location.replace方式，加载URL指定的新文档来替换当前文档,</span><br><span class="line">  是替换当前窗口的页面，前后两个页面共用一个窗口，</span><br><span class="line">  不会在浏览器的历史记录被查询到，没有后退返回上一页*/</span><br><span class="line">  window.history.go(n);</span><br><span class="line">  /*历史记录go(n)方式（n表示对历史记录相对当前页的前进步数，</span><br><span class="line">  n为负数表示返回以前的页面，n也可以是一个表示url的字符串，</span><br><span class="line">  url必须是历史记录中的，不然不会跳转）*/</span><br><span class="line">  setTimeout("window.open('index.php',target,args)",3000);</span><br><span class="line">  //通过打开一个新窗口实现跳转</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="PHP脚本控制跳转方式"><a href="#PHP脚本控制跳转方式" class="headerlink" title="PHP脚本控制跳转方式"></a>PHP脚本控制跳转方式</h3><p>通过改写HTTP头信息来进行跳转</p>
 <h4 id="header-refresh方式"><a href="#header-refresh方式" class="headerlink" title="header refresh方式"></a>header refresh方式</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Header(“refresh:<span class="number">3</span>;url=’index.php’”);</span><br></pre></td></tr></table></figure>
 <h4 id="header-location方式"><a href="#header-location方式" class="headerlink" title="header location方式"></a>header location方式</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sleep(<span class="number">3</span>);</span><br><span class="line">Header(“location:index.php”);</span><br></pre></td></tr></table></figure>
@@ -477,6 +477,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/19/CSS导入方式/" rel="prev" title="CSS导入方式">
+                CSS导入方式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -564,7 +568,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -575,7 +579,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -608,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#页面延时跳转"><span class="nav-number">1.</span> <span class="nav-text">页面延时跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在head头部里写meta标签"><span class="nav-number">1.1.</span> <span class="nav-text">在head头部里写meta标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用JavaScript实现"><span class="nav-number">1.2.</span> <span class="nav-text">用JavaScript实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#window对象的setTimeout方法"><span class="nav-number">1.2.1.</span> <span class="nav-text">window对象的setTimeout方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setInterval-方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">setInterval()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript页面跳转方法"><span class="nav-number">2.</span> <span class="nav-text">JavaScript页面跳转方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP脚本控制跳转方式"><span class="nav-number">2.1.</span> <span class="nav-text">PHP脚本控制跳转方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#header-refresh方式"><span class="nav-number">2.1.1.</span> <span class="nav-text">header refresh方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#header-location方式"><span class="nav-number">2.1.2.</span> <span class="nav-text">header location方式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#页面延时跳转"><span class="nav-number">1.</span> <span class="nav-text">页面延时跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在head头部里写meta标签"><span class="nav-number">1.1.</span> <span class="nav-text">在head头部里写meta标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用JavaScript实现"><span class="nav-number">1.2.</span> <span class="nav-text">用JavaScript实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#window对象的setTimeout方法"><span class="nav-number">1.2.1.</span> <span class="nav-text">window对象的setTimeout方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setInterval-方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">setInterval()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面跳转"><span class="nav-number">2.</span> <span class="nav-text">页面跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript页面跳转方法"><span class="nav-number">2.1.</span> <span class="nav-text">JavaScript页面跳转方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP脚本控制跳转方式"><span class="nav-number">2.2.</span> <span class="nav-text">PHP脚本控制跳转方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#header-refresh方式"><span class="nav-number">2.2.1.</span> <span class="nav-text">header refresh方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#header-location方式"><span class="nav-number">2.2.2.</span> <span class="nav-text">header location方式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -628,7 +632,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -82,18 +82,18 @@
 
 
 
-<meta name="description" content="load()方法会在指定元素的onload()事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生load()事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发load()事件。用法如下： 1. $(window).load(function(){});  2. $(&amp;quot;doc">
+<meta name="description" content="load()方法会在指定元素的onload()事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生load()事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发load()事件。用法如下： 1231. $(window).load(function()&amp;#123;&amp;#125;);2.">
 <meta name="keywords" content="jQuery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="load()方法 jQuery1.8已弃用">
 <meta property="og:url" content="http://zzz12521.github.io/2018/12/13/load-方法-jQuery1-8已弃用/index.html">
 <meta property="og:site_name" content="zzz12521&#39;s personal blog">
-<meta property="og:description" content="load()方法会在指定元素的onload()事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生load()事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发load()事件。用法如下： 1. $(window).load(function(){});  2. $(&amp;quot;doc">
+<meta property="og:description" content="load()方法会在指定元素的onload()事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生load()事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发load()事件。用法如下： 1231. $(window).load(function()&amp;#123;&amp;#125;);2.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-21T15:40:49.135Z">
+<meta property="og:updated_time" content="2019-01-19T06:59:35.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="load()方法 jQuery1.8已弃用">
-<meta name="twitter:description" content="load()方法会在指定元素的onload()事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生load()事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发load()事件。用法如下： 1. $(window).load(function(){});  2. $(&amp;quot;doc">
+<meta name="twitter:description" content="load()方法会在指定元素的onload()事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生load()事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发load()事件。用法如下： 1231. $(window).load(function()&amp;#123;&amp;#125;);2.">
 
 
 
@@ -398,26 +398,19 @@
 
       
         <p><code>load()</code>方法会在指定元素的<code>onload()</code>事件中绑定一个处理函数，在指定元素的内容加载完毕后会发生<code>load()</code>事件，触发该处理函数。该事件适用于任何带有URL的元素（如图像、脚本、框架、内联框架）。根据不同的浏览器（Firefox和IE），如果图像已被缓存，也许不会触发<code>load()</code>事件。用法如下：</p>
-<pre><code>1. $(window).load(function(){});
-
-2. $(&quot;document&quot;).load(function(){});
-</code></pre><p>第一个用法等价于</p>
-<pre><code>window.onload=function(){};
-</code></pre><a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> $(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> $(<span class="string">"document"</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>第一个用法等价于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>在用如下代码测试第一个用法时</p>
-<pre><code>$(window).load(function () {
-var body_element = document.getElementsByTagName(&quot;ul&quot;)[0];
-if (body_element.childNodes.length == 0) return;
-else
-    alert(body_element.childNodes.length);
-});
-</code></pre><p>出现错误：</p>
-<pre><code>Uncaught TypeError: url.indexof is not a function at jQuery.fn.init.jQuery.fn.load`
-</code></pre><p>原来<code>.load()</code>，<code>.unload()</code>和<code>.error()</code>从jQuery1.8开始就被弃用了，换成了<code>.on()</code>方法。将</p>
-<pre><code>$(window).load(function(){});
-</code></pre><p>改为：</p>
-<pre><code>$(window).on(&quot;load&quot;,function(){});
-</code></pre><p>如此，便可以在浏览器加载完毕后出现alert警告框。<br>同样地，第二个用法也应使用<code>.on()</code>方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> body_element = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"ul"</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">if</span> (body_element.childNodes.length == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    alert(body_element.childNodes.length);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>出现错误：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught <span class="built_in">TypeError</span>: url.indexof is not a <span class="function"><span class="keyword">function</span> <span class="title">at</span> <span class="title">jQuery</span>.<span class="title">fn</span>.<span class="title">init</span>.<span class="title">jQuery</span>.<span class="title">fn</span>.<span class="title">load</span>`</span></span><br></pre></td></tr></table></figure>
+<p>原来<code>.load()</code>，<code>.unload()</code>和<code>.error()</code>从jQuery1.8开始就被弃用了，换成了<code>.on()</code>方法。将</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).on(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>如此，便可以在浏览器加载完毕后出现alert警告框。<br>同样地，第二个用法也应使用<code>.on()</code>方法。</p>
 
       
     </div>
@@ -447,10 +440,6 @@ else
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/12/13/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
             
           </div>
 
@@ -539,7 +528,7 @@ else
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -550,7 +539,7 @@ else
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -587,7 +576,7 @@ else
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
